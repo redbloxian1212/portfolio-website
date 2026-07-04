@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
 body {
-  cursor: url("/pizza.png"), auto;
+  cursor: url("/pizza-small.png"), auto;
+}
+
+a, button {
+  cursor: url("/pizza-small.png"), pointer;
 }
