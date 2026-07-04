@@ -7,11 +7,18 @@ type TreeItemProps = {
 
 function TreeItem({ isLast = false, children }: TreeItemProps) {
   return (
-    <div className="relative pl-6">
-      <span className="absolute left-0 top-0 w-3 h-1/2 border-l border-b border-gray-500" />
+    <div className="relative pl-6 py-1">
+      {/* dot marker */}
+      <span className="absolute left-[-3px] top-1/2 -translate-y-1/2 w-[7px] h-[7px] rounded-full bg-gray-300" />
+
+      {/* horizontal branch to the dot */}
+      <span className="absolute left-0 top-1/2 w-3 h-px bg-gray-400" />
+
+      {/* vertical line down to next item (skip on last) */}
       {!isLast && (
-        <span className="absolute left-0 top-1/2 bottom-0 w-px border-l border-gray-500" />
+        <span className="absolute left-0 top-1/2 bottom-[-4px] w-px bg-gray-400" />
       )}
+
       {children}
     </div>
   );
