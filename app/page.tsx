@@ -5,36 +5,56 @@ import { games } from "@/app/data/games";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16">
-      <h1 className="text-3xl">
-        Yo, I&apos;m <span className="underline">src</span>
-      </h1>
-      <p className="text-gray-400 mt-1 mb-12">some bio</p>
+    <main className="min-h-screen flex items-center justify-center py-20">
+      <div className="max-w-xl w-full px-6">
+        {/* Hero */}
+        <section className="text-center mb-16">
+          <h1 className="text-6xl font-bold tracking-tight">
+            Yo, I&apos;m <span className="underline">src</span>
+          </h1>
+          <p className="text-gray-400 mt-2">
+            3 years of Luau experience, building things that work now and later.
+          </p>
+        </section>
 
-      <TreeSection label="src/work">
-        {games.map((game) => (
-          <Link
-            key={game.slug}
-            href={`/work/${game.slug}`}
-            className="hover:text-green-400 transition-colors"
-          >
-            {game.title}
-          </Link>
-        ))}
-      </TreeSection>
+        {/* Content */}
+        <section>
+          <TreeSection label="src/work">
+            {games.map((game) => (
+              <Link key={game.slug} href={`/work/${game.slug}`} className="hover:text-green-400 transition-colors">
+                {game.title}
+              </Link>
+            ))}
+          </TreeSection>
 
-      <TreeSection label="src/docs">
-        <a href="/cv.pdf" target="_blank" className="hover:text-green-400 transition-colors">
-          CV
-        </a>
-        <a href="/resume.pdf" target="_blank" className="hover:text-green-400 transition-colors">
-          Resume
-        </a>
-      </TreeSection>
+          <TreeSection label="src/docs">
+            <a href="/cv.pdf" target="_blank" className="hover:text-green-400 transition-colors">
+              CV
+            </a>
 
-      <TreeSection label="src/contact">
-        <CopyLink label="discord: @hask3l" value="hask3l" />
-      </TreeSection>
+            <a href="/resume.pdf" target="_blank" className="hover:text-green-400 transition-colors">
+              Resume
+            </a>
+          </TreeSection>
+
+          <TreeSection label="src/links">
+            <a href="https://github.com/redbloxian1212" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+              GitHub
+            </a>
+          </TreeSection>
+        </section>
+
+        {/* Connect */}
+        <div className="mt-10 text-left">
+          <p className="text-gray-500 mb-2">connect with me:</p>
+          <CopyLink label="discord: @hask3l" value="hask3l" />
+        </div>
+
+        <footer className="mt-16 pt-6 border-t border-dashed border-gray-800 flex justify-between text-xs text-gray-500">
+          <span>last updated: July 5, 2026</span>
+          <span className="text-green-400">● open to work</span>
+        </footer>
+      </div>
     </main>
   );
 }

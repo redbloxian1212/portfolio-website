@@ -27,6 +27,9 @@ export default async function GamePage({
           <li key={i}>{d}</li>
         ))}
       </ul>
+      <a href={game.robloxUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-8 text-green-400 hover:underline">
+        See on Roblox →
+      </a>
     </main>
   );
 }
