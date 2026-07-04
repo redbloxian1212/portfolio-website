@@ -28,10 +28,6 @@ export default function Home() {
           </TreeSection>
 
           <TreeSection label="src/docs">
-            <a href="/cv.pdf" target="_blank" className="hover:text-green-400 transition-colors">
-              CV
-            </a>
-
             <a href="/resume.pdf" target="_blank" className="hover:text-green-400 transition-colors">
               Resume
             </a>
