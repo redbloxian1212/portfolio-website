@@ -34,7 +34,7 @@ export const games: Game[] = [
     subtitle: "Legacy Migration • Performance • LiveOps",
 
     overview:
-      "Crazy Chefs averaged roughly 1.2k concurrent players while I worked on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long-lived production servers to gradually degrade in performance.",
+      "Crazy Chefs averaged roughly 1.2k concurrent players while I worked on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long-lived production servers to gradually degrade in performance. It felt like I had a heart attack when I deployed that shit.",
 
     challenge:
       "Being an acquisitioned game, many long-lived production servers gradually became laggy over time due to accumulated technical debt. Increased CPU time, excessive memory usage, and unstable heartbeat behavior led to inconsistent gameplay responsiveness, while the underlying codebase made debugging and feature development increasingly difficult.",
@@ -135,7 +135,7 @@ export const games: Game[] = [
       }
     ],
     lessons:
-      "Working on live persistence systems reinforced that technical solutions alone are not enough. Careful validation, backwards-compatible migrations, and coordinated testing were essential to ensuring players retained their progress throughout the rollout.",
+      "I realized when working on live persistence systems, solving the problem alone is not enough. Careful validation, backwards-compatible migrations, and coordinated testing are essential to ensuring players don't lose their progress throughout the rollout.",
     robloxUrl:
       "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
   },
