@@ -49,7 +49,7 @@ export default function Home() {
         </div>
 
         <footer className="mt-16 pt-6 border-t border-dashed border-gray-800 flex justify-between text-xs text-gray-500">
-          <span>last updated: July 5, 2026</span>
+          <span>last updated: July 6, 2026</span>
           <span className="text-green-400">● open to work</span>
         </footer>
       </div>

@@ -138,4 +138,107 @@ export const games: Game[] = [
     robloxUrl:
       "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
   },
+  {
+    slug: "speed-bridge-building",
+    title: "Fixing a 73% client crash rate within minutes",
+    gameName: "+1 Speed Bridge Building",
+    subtitle: "Performance Optimization • Rapid Deployment • LiveOps",
+    robloxUrl: "https://www.roblox.com/games/135787657971346/1-Speed-Bridge-Building",
+
+    overview:
+      "While monitoring games that I used to work on, I noticed +1 Speed Bridge Building(~3k CCU) had a huge spike in client crashes after a recent update that allowed players to easily buy hundreds of thousands of bridges. Trying to load everything at once posed extreme stress to the cpu, no breathing room at all, yikes! No time wasted, I informed my manager and immediately began fixing it. ",
+
+    challenge:
+      "The game attempted to load every bridge simultaneously. When a player loaded the game, they had to wait for a long time, or worse, they crashed. At high speeds, characters became unstable and kept getting flinged due to the bridge's animation creating small ridges that would trip/fling the character.",
+
+    beforeImage: "",
+    afterImage: "",
+
+    investigation: [
+      "Profiled bridge loading behavior on large saves.",
+      "Identified that thousands of bridge instances were being processed in a single frame.",
+      "Investigated Humanoid physics behavior while moving at high speeds.",
+    ],
+
+    implementation: [
+      "Distributed bridge loading across multiple frames instead of loading everything at once.",
+      "Created dedicated hitboxes for bridges to improve collision behavior as bridges were animated when a player touched them.",
+      "Disabled the Humanoid FallingDown state to further improve character stability at high speeds.",
+    ],
+
+    results: [
+      {
+        metric: "Client Crash Rate",
+        before: "73%",
+        after: "Near Zero",
+      },
+    ],
+
+    lessons:
+      "Drinking 3 cups of coffee helps fixing production bugs quickly.",
+  },
+  {
+    slug: "brainrot-bounties",
+
+    title: "Building a Roblox Game from Scratch",
+
+    subtitle: "Gameplay Programming • UI • Sound Design",
+
+    gameName: "Brainrot Bounties",
+
+    overview:
+      "Brainrot Bounties was built from scratch as a small team project. I was responsible for programming, UI design, and sound design(I put toolbox sounds together). Working across multiple disciplines meant balancing gameplay implementation, economy and UX. Every system needed to feel cohesive despite being developed simultaneously. I like the sound design in this game.",
+
+    challenge: "",
+
+    investigation: [],
+
+    implementation: [],
+
+    results: [],
+
+    lessons: "",
+
+    robloxUrl:
+      "https://www.roblox.com/games/139701287827416/Brainrot-Bounties",
+  },
+  {
+    slug: "shoot-a-brainrot",
+
+    title: "Reducing Friction Between Modelers and Programmers",
+
+    subtitle: "Developer Experience • Team Productivity • LiveOps",
+
+    gameName: "Shoot a Brainrot",
+
+    overview:
+      "While working alongside modelers in Shoot a Brainrot, I noticed a repetitive workflow where brainrot assets frequently bounced between modelers and programmers because of incorrect model rotation(usual blender-roblox problems). Fixed it with a few lines of code that allowed modelers and programmers to tweak its rotation as a config.",
+
+    challenge:
+      "When imported models had incorrect rotation, fixing them required the modeler to return to Blender, re-export the asset, and have it imported again. This created unnecessary back-and-forth between modelers and programmers for what was ultimately just a rotation adjustment. You couldn't also `just rotate` them, you'd need to dig into the game's code)",
+
+    investigation: [
+      "Reviewed how imported models were used in-game.",
+      "Studied the full life cycle of a brainrot entity from spawning, getting killed, and despawning.",
+      "Checked how the code rotates the models and found that it uses align orientation.",
+    ],
+
+    implementation: [
+      "Modified the constructor to read and apply rotation values into AlignOrientation during entity creation from the config.",
+    ],
+
+    results: [
+      {
+        metric: "Rotation Fixes",
+        before: "Required Blender re-export",
+        after: "One-line code change",
+      },
+    ],
+
+    lessons:
+      "Sometimes, small changes can have an outsized impact on a team's productivity. Eliminating repetitive manual work speeds up development and lets both programmers and modelers focus on tasks that truly matter.",
+
+    robloxUrl:
+      "https://www.rolimons.com/game/78949013360566",
+  },
 ];
