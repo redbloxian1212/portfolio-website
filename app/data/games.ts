@@ -144,7 +144,7 @@ export const games: Game[] = [
   },
   {
     slug: "speed-bridge-building",
-    title: "Fixing a 73% client crash rate within minutes",
+    title: "Fixing massive client crash rates within minutes",
     meta: "Worked during 1.5K-3K CCU | 18M lifetime visits",
     gameName: "+1 Speed Bridge Building",
     subtitle: "Performance Optimization • Rapid Deployment • LiveOps",
@@ -157,7 +157,7 @@ export const games: Game[] = [
       "The game attempted to load every bridge simultaneously. When a player loaded the game, they had to wait for a long time, or worse, they crashed. At high speeds, characters became unstable and kept getting flinged due to the bridge's animation creating small ridges that would trip/fling the character.",
 
     beforeImage: "",
-    afterImage: "",
+    afterImage: "/speed_bridge/crash_fix.png",
 
     investigation: [
       "Profiled bridge loading behavior on large saves.",
