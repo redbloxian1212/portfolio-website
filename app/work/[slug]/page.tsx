@@ -29,21 +29,32 @@ export default async function GamePage({
         ← back
       </Link>
 
-      <h1 className="text-4xl mt-8 font-bold">
-        {game.title}
-      </h1>
+      <h1 className="text-4xl mt-8 font-bold">{game.title}</h1>
 
       {game.subtitle && (
-        <p className="text-green-400 mt-2">
-          {game.subtitle}
-        </p>
+        <p className="text-green-400 mt-2">{game.subtitle}</p>
       )}
 
       {game.overview && (
         <section className="mt-10">
           <h2 className="text-xl mb-3">Overview</h2>
+
           <p className="text-gray-300 leading-8">
-            {game.overview}
+            {game.overview.split(game.gameName).map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <a
+                    href={game.robloxUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-400 font-semibold underline decoration-dotted underline-offset-4 hover:text-green-300 transition"
+                  >
+                    {game.gameName}
+                  </a>
+                )}
+              </span>
+            ))}
           </p>
         </section>
       )}
@@ -51,6 +62,7 @@ export default async function GamePage({
       {game.challenge && (
         <section className="mt-10">
           <h2 className="text-xl mb-3">Challenge</h2>
+
           <p className="text-gray-300 leading-8">
             {game.challenge}
           </p>
