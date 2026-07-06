@@ -23,23 +23,49 @@ export default function Home() {
 
         {/* Content */}
         <section>
-          <TreeSection label="IMPACT">
-            {games.map((game) => (
-              <Link key={game.slug} href={`/work/${game.slug}`} className="hover:text-green-400 transition-colors">
-                {game.title}
-              </Link>
-            ))}
-          </TreeSection>
+          <TreeSection
+            label="IMPACT"
+            items={games.map((game) => ({
+              content: (
+                <Link
+                  href={`/work/${game.slug}`}
+                  className="block hover:text-green-400 transition-colors"
+                >
+                  {game.title}
+                </Link>
+              ),
+              meta: game.meta,
+            }))}
+          />
 
-          <TreeSection label="ABOUT ME">
-            <a href="/resume.pdf" target="_blank" className="hover:text-green-400 transition-colors">
-              Resume
-            </a>
-            <a href="https://github.com/redbloxian1212" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
-              GitHub
-            </a>
-          </TreeSection>
-
+          <TreeSection
+            label="ABOUT ME"
+            items={[
+              {
+                content: (
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    className="hover:text-green-400 transition-colors"
+                  >
+                    Resume
+                  </a>
+                ),
+              },
+              {
+                content: (
+                  <a
+                    href="https://github.com/redbloxian1212"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-green-400 transition-colors"
+                  >
+                    GitHub
+                  </a>
+                ),
+              },
+            ]}
+          />
         </section>
 
         {/* Connect */}

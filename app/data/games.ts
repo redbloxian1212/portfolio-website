@@ -1,6 +1,7 @@
 export type Game = {
   slug: string;
   title: string;
+  meta?: string;
   subtitle: string;
   gameName: string;
 
@@ -31,6 +32,7 @@ export const games: Game[] = [
     slug: "crazy-chefs",
 
     title: "Optimizing a Live Roblox Game at Scale",
+    meta: "1.2K-2K CCU | 254M lifetime visits",
 
     subtitle: "Legacy Migration • Performance • LiveOps",
 
@@ -92,6 +94,8 @@ export const games: Game[] = [
   {
     slug: "shoot-the-brainrots",
     title: "Rewriting Data System on a Live Roblox Game",
+    meta: "Worked during 2K-10.5K CCU | 21.1M lifetime visits",
+
     subtitle: "Data Persistence • LiveOps • Incident Response • QA Collaboration",
     gameName: "Shoot the Brainrots",
     overview:
@@ -141,6 +145,7 @@ export const games: Game[] = [
   {
     slug: "speed-bridge-building",
     title: "Fixing a 73% client crash rate within minutes",
+    meta: "Worked during 1.5K-3K CCU | 18M lifetime visits",
     gameName: "+1 Speed Bridge Building",
     subtitle: "Performance Optimization • Rapid Deployment • LiveOps",
     robloxUrl: "https://www.roblox.com/games/135787657971346/1-Speed-Bridge-Building",
@@ -175,12 +180,13 @@ export const games: Game[] = [
     ],
 
     lessons:
-      "Drinking 3 cups of coffee helps fixing production bugs quickly.",
+      "Drinking 3 cups of coffee helps fixing production bugs within 30 minutes.",
   },
   {
     slug: "brainrot-bounties",
 
     title: "Building a Roblox Game from Scratch",
+    meta: "Peaked at 1.2K CCU | 1M lifetime visits",
 
     subtitle: "Gameplay Programming • UI • Sound Design",
 
@@ -206,6 +212,7 @@ export const games: Game[] = [
     slug: "shoot-a-brainrot",
 
     title: "Reducing Friction Between Modelers and Programmers",
+    meta: "Worked during 2K-5K CCU | 76M lifetime visits",
 
     subtitle: "Developer Experience • Team Productivity • LiveOps",
 
