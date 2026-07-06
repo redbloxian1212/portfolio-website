@@ -42,7 +42,7 @@ export const games: Game[] = [
       "Crazy Chefs averaged roughly 1.2k concurrent players while I worked on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long-lived production servers to gradually degrade in performance. It felt like I had a heart attack when I finally deployed it.",
 
     challenge:
-      "Being an acquisitioned game, many long-lived production servers gradually became laggy over time due to accumulated technical debt. Increased CPU time, excessive memory usage, and unstable heartbeat behavior led to inconsistent gameplay responsiveness, while the underlying codebase made debugging and feature development increasingly difficult.",
+      "Many long-lived production servers gradually became laggy over time due to accumulated technical debt. Increased CPU time, excessive memory usage, and unstable heartbeat behavior led to inconsistent gameplay responsiveness, while the underlying codebase made debugging and feature development increasingly difficult.",
 
     investigation: [
       "Established baseline metrics using Roblox Performance dashboards before making changes.",
