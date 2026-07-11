@@ -48,7 +48,7 @@ export const games: Game[] = [
       "Established baseline metrics using Roblox Performance dashboards before making changes.",
       "Tracked server CPU time, heartbeat stability, server memory usage and compute efficiency.",
       "Identified legacy systems performing unnecessary work every frame.",
-      "Found the major causes of the performance issues."
+      "Found the major causes of the performance issues: inefficient loops, detection, broad checks."
     ],
 
     implementation: [
