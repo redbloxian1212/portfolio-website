@@ -14,7 +14,16 @@ export default function Home() {
           </h1>
           <p className="text-gray-400 mt-2">
             3 years of Luau experience, covering gameplay systems, architecture,
-            performance optimization and live datastore reliability.
+            performance optimization and live datastore reliability. Built my own{" "}
+            <a
+              href="https://github.com/redbloxian1212/Forge-Framework-v2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 underline decoration-dotted underline-offset-4 hover:text-green-300 transition"
+            >
+              framework
+            </a>{" "}
+            that I use on games that I have ownership. It's public, but only used between me and my friend.
             <br />
             <br />
             Tech stack: Luau, Roblox Studio, Git, Rojo, Wally.
