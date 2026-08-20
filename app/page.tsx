@@ -33,7 +33,7 @@ export default function Home() {
         {/* Content */}
         <section>
           <TreeSection
-            label="IMPACT"
+            label="IMPACT (Click to view details.)"
             items={games.map((game) => ({
               content: (
                 <Link
