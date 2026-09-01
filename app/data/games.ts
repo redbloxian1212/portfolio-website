@@ -39,7 +39,7 @@ export const games: Game[] = [
     gameName: "Crazy Chefs",
 
     overview:
-      "Crazy Chefs averaged roughly 1.2k concurrent players while I worked on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long running servers to gradually degrade in performance.",
+      "Crazy Chefs averages 2.5k concurrent players while I work on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long running servers to gradually degrade in performance.",
 
     challenge:
       "Many long-lived production servers gradually became laggy over time due to accumulated technical debt. Increased CPU time, excessive memory usage, and unstable heartbeat behavior led to inconsistent gameplay responsiveness, while the underlying codebase made debugging and feature development increasingly difficult.",
@@ -208,7 +208,7 @@ export const games: Game[] = [
     robloxUrl:
       "https://www.roblox.com/games/139701287827416/Brainrot-Bounties",
   },
-  {
+  /*{
     slug: "shoot-a-brainrot",
 
     title: "Reducing Friction Between Modelers and Programmers",
@@ -247,5 +247,5 @@ export const games: Game[] = [
 
     robloxUrl:
       "https://www.rolimons.com/game/78949013360566",
-  },
+  }*/
 ];
