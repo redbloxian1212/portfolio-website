@@ -32,7 +32,7 @@ export const games: Game[] = [
     slug: "crazy-chefs",
 
     title: "Optimizing a Live Roblox Game at Scale",
-    meta: "1.2K-2K CCU | 254M lifetime visits",
+    meta: "2.5K-5K CCU | 282M lifetime visits",
 
     subtitle: "Legacy Migration • Performance • LiveOps",
 
