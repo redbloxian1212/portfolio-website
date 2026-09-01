@@ -80,7 +80,7 @@ export default function Home() {
         {/* Connect */}
         <div className="mt-10 text-left">
           <p className="text-gray-500 mb-2">connect with me on discord:</p>
-          <CopyLink label="@hask3l (click to copy)" value="hask3l" />
+          <CopyLink label="@src.dev (click to copy)" value="src.dev" />
         </div>
 
         <footer className="mt-16 pt-6 border-t border-dashed border-gray-800 flex justify-between text-xs text-gray-500">
