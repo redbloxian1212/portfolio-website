@@ -23,7 +23,7 @@ export default function Home() {
             >
               framework
             </a>{" "}
-            that I use on games that I have ownership. It's public, but only used between me and my friend.
+            that I use on games that I have engineering ownership.
             <br />
             <br />
             Tech stack: Luau, Roblox Studio, Git, Rojo, Wally.
