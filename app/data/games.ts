@@ -144,7 +144,7 @@ export const games: Game[] = [
   },
   {
     slug: "speed-bridge-building",
-    title: "Fixing massive client crash rates within minutes",
+    title: "Fixing a spike in client crash rates within minutes",
     meta: "Worked during 1.5K-3K CCU | 18M lifetime visits",
     gameName: "+1 Speed Bridge Building",
     subtitle: "Performance Optimization • Rapid Deployment • LiveOps",
@@ -174,7 +174,7 @@ export const games: Game[] = [
     results: [
       {
         metric: "Client Crash Rate",
-        before: "73%",
+        before: "12.01%",
         after: "Near Zero",
       },
     ],
