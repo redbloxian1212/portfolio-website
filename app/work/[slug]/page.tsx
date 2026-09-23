@@ -152,16 +152,6 @@ export default async function GamePage({
         </section>
       )}
 
-      {game.lessons && (
-        <section className="mt-12">
-          <h2 className="text-xl mb-3">Reflection</h2>
-
-          <p className="text-gray-300 leading-8">
-            {game.lessons}
-          </p>
-        </section>
-      )}
-
       <a
         href={game.robloxUrl}
         target="_blank"

@@ -19,8 +19,6 @@ export type Game = {
     after: string;
   }[];
 
-  lessons: string;
-
   beforeImage?: string;
   afterImage?: string;
 
@@ -81,9 +79,6 @@ export const games: Game[] = [
       },
     ],
 
-    lessons:
-      "Large-scale optimization is ultimately a measurement problem. Rather than relying on assumptions, I established baseline metrics, made incremental changes, and validated every improvement against production telemetry before considering the work complete. Since I lacked knowledge using proper analytics tool, I had to make use of what I already knew and kept things simple.",
-
     beforeImage: "/crazy_chefs/perf_before.png",
     afterImage: "/crazy_chefs/perf_after.png",
 
@@ -137,8 +132,6 @@ export const games: Game[] = [
         after: "~130%"
       }
     ],
-    lessons:
-      "I realized when working with live persistence systems, careful validation, backwards-compatible migrations, and coordinated testing are non-negotioable to ensuring players don't lose their progress throughout the rollout.",
     robloxUrl:
       "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
   },
@@ -178,35 +171,6 @@ export const games: Game[] = [
         after: "Near Zero",
       },
     ],
-
-    lessons:
-      "Drinking 3 cups of coffee helps fixing production bugs within 30 minutes.",
-  },
-  {
-    slug: "brainrot-bounties",
-
-    title: "Building a Roblox Game from Scratch",
-    meta: "Peaked at 1.2K CCU | 1M lifetime visits",
-
-    subtitle: "Gameplay Programming • UI • Sound Design",
-
-    gameName: "Brainrot Bounties",
-
-    overview:
-      "Brainrot Bounties was built from scratch as a small team project. I was responsible for programming, UI design, and sound design(I put toolbox sounds together). Working across multiple disciplines meant balancing gameplay implementation, economy and UX. Every system needed to feel cohesive despite being developed simultaneously. I like the sound design in this game.",
-
-    challenge: "",
-
-    investigation: [],
-
-    implementation: [],
-
-    results: [],
-
-    lessons: "",
-
-    robloxUrl:
-      "https://www.roblox.com/games/139701287827416/Brainrot-Bounties",
   },
   /*{
     slug: "shoot-a-brainrot",
@@ -241,9 +205,6 @@ export const games: Game[] = [
         after: "One-line code change",
       },
     ],
-
-    lessons:
-      "Sometimes, small changes can have an outsized impact on a team's productivity. Eliminating repetitive manual work speeds up development and lets both programmers and modelers focus on tasks that truly matter.",
 
     robloxUrl:
       "https://www.rolimons.com/game/78949013360566",
