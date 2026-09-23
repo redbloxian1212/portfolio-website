@@ -4,9 +4,22 @@ import "./globals.css";
 
 const mono = JetBrains_Mono({ subsets: ["latin"] });
 
+const title = "src · Luau Programmer";
+const description =
+  "Luau programmer for live Roblox games: backend, performance, and LiveOps. Case studies from Crazy Chefs, Shoot the Brainrots, and +1 Speed Bridge Building.";
+
 export const metadata: Metadata = {
-  title: "src",
-  description: "src's dev portfolio",
+  title: {
+    default: title,
+    template: "%s · src",
+  },
+  description,
+  openGraph: {
+    title,
+    description,
+    siteName: "src",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

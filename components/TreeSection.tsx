@@ -2,12 +2,12 @@ import { ReactNode } from "react";
 
 type TreeItemProps = {
   isLast?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 function TreeItem({ isLast = false, children }: TreeItemProps) {
   return (
-    <div className="relative pl-6 py-2.5">
+    <div className="relative pl-6 sm:pl-7">
       {/* vertical line */}
       {!isLast ? (
         <span className="absolute left-0 top-0 bottom-0 w-px bg-gray-400" />
@@ -16,7 +16,7 @@ function TreeItem({ isLast = false, children }: TreeItemProps) {
       )}
 
       {/* horizontal branch */}
-      <span className="absolute left-0 top-1/2 w-3 h-px bg-gray-400" />
+      <span className="absolute left-0 top-1/2 w-3 sm:w-3.5 h-px bg-gray-400" />
 
       {/* dot */}
       <span className="absolute left-[-3px] top-1/2 -translate-y-1/2 w-[7px] h-[7px] rounded-full bg-gray-300" />
@@ -27,38 +27,41 @@ function TreeItem({ isLast = false, children }: TreeItemProps) {
 }
 
 type Item = {
+  key: string;
   content: ReactNode;
-  meta?: string;
 };
 
 type TreeSectionProps = {
+  id?: string;
   label: string;
+  hint?: string;
   items: Item[];
 };
 
 export default function TreeSection({
+  id,
   label,
+  hint,
   items,
 }: TreeSectionProps) {
   return (
-    <div className="mb-14">
-      <p className="text-gray-300 mb-3">{label}</p>
+    <section id={id} className="flex flex-col gap-3">
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="text-[13px] font-bold tracking-[0.08em] text-gray-300">
+          {label}
+        </h2>
+        {hint && (
+          <span className="hidden sm:inline text-xs text-gray-400">{hint}</span>
+        )}
+      </div>
 
       <div>
         {items.map((item, i) => (
-          <TreeItem key={i} isLast={i === items.length - 1}>
-            <div>
-              {item.content}
-
-              {item.meta && (
-                <p className="text-xs font-bold text-gray-500 mt-0.5">
-                  {item.meta}
-                </p>
-              )}
-            </div>
+          <TreeItem key={item.key} isLast={i === items.length - 1}>
+            {item.content}
           </TreeItem>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

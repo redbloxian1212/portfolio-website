@@ -1,9 +1,30 @@
 export type Game = {
   slug: string;
-  title: string;
-  meta?: string;
-  subtitle: string;
   gameName: string;
+  // Look it up at https://apis.roblox.com/universes/v1/places/<placeId>/universe
+  universeId: number;
+  robloxUrl: string;
+
+  // Homepage row
+  headline: string;
+  // CCU while you worked on the game. Typed by hand on purpose: a game's live
+  // player count can drop after you leave, and that would undersell your work.
+  ccu: string;
+
+  // Case study header
+  title: string;
+  subtitle: string;
+  summary?: string;
+  role?: string;
+  studio?: string;
+  when?: string;
+  team?: string;
+  stack?: string;
+  highlights: {
+    label: string;
+    value: string;
+    from: string;
+  }[];
 
   overview: string;
 
@@ -18,42 +39,69 @@ export type Game = {
     before: string;
     after: string;
   }[];
+  resultsNote?: string;
 
-  beforeImage?: string;
-  afterImage?: string;
-
-  robloxUrl: string;
+  evidence: {
+    src: string;
+    alt: string;
+    label: string;
+    width: number;
+    height: number;
+  }[];
 };
+
+// Games shown as thumbnails under "Also worked on", without a case study.
+export type OtherGame = {
+  name: string;
+  universeId: number;
+  robloxUrl: string;
+  ccu?: string;
+};
+
+const computeEfficiencyNote =
+  "Compute efficiency is Roblox's measure of how efficiently a game's servers run compared to the Roblox average. Above 100% means more efficient than average.";
 
 export const games: Game[] = [
   {
     slug: "crazy-chefs",
+    gameName: "Crazy Chefs",
+    universeId: 6136243726,
+    robloxUrl: "https://www.roblox.com/games/18102078939/CRAZY-CHEFS",
+
+    headline: "Server CPU 16.9 → 1.4 ms, memory 943 → 234 MB",
+    ccu: "2.5K–5K CCU",
 
     title: "Optimizing a Live Roblox Game at Scale",
-    meta: "2.5K-5K CCU | 282M lifetime visits",
+    subtitle: "Legacy Migration · Performance · LiveOps",
+    summary:
+      "Server CPU time down 12× and server memory down 4× on a game averaging 2.5K concurrent players, while still shipping content.",
+    role: "Programmer (contract)",
+    studio: "Grow Games",
+    when: "Feb 2026 – present",
+    stack: "Luau · Forge v2",
+    highlights: [
+      { label: "Server CPU time", value: "1.4 ms", from: "16.9 ms" },
+      { label: "Server memory", value: "234 MB", from: "943 MB" },
+      { label: "Server heartbeat", value: "60", from: "1–14" },
+    ],
 
-    subtitle: "Legacy Migration • Performance • LiveOps",
-
-    gameName: "Crazy Chefs",
-
-    overview:
-      "Crazy Chefs averages 2.5k concurrent players while I work on it. Over time, the game accumulated significant technical debt, making new feature development increasingly difficult while causing many long running servers to gradually degrade in performance.",
+    overview: "",
 
     challenge:
-      "Many long-lived production servers gradually became laggy over time due to accumulated technical debt. Increased CPU time, excessive memory usage, and unstable heartbeat behavior led to inconsistent gameplay responsiveness, while the underlying codebase made debugging and feature development increasingly difficult.",
+      "Crazy Chefs averages 2.5K concurrent players. Accumulated technical debt made new features slow to build, and long-running servers degraded over time: CPU time climbed, memory kept growing, and heartbeat became unstable, so gameplay felt laggy on older servers.",
 
     investigation: [
-      "Established baseline metrics using Roblox Performance dashboards before making changes.",
-      "Tracked server CPU time, heartbeat stability, server memory usage and compute efficiency.",
-      "Identified legacy systems performing unnecessary work every frame.",
-      "Found the major causes of the performance issues: inefficient loops, detection, broad checks."
+      "Set baseline metrics on Roblox's server performance dashboards before changing anything.",
+      "Tracked server CPU time, heartbeat, server memory, and compute efficiency.",
+      "Found legacy systems doing unnecessary work every frame.",
+      "Traced the main causes to inefficient loops, detection logic, and overly broad checks.",
     ],
 
     implementation: [
-      "Migrated large parts of the project to a dependency-injected architecture (Forge v2).",
-      "Removed redundant work occurring every frame.",
-      "Refactored systems to reduce coupling and improve long-term maintainability.",
-      "Continued shipping gameplay content and quality-of-life improvements throughout the migration."
+      "Migrated large parts of the codebase to Forge v2, my dependency-injected framework.",
+      "Removed redundant work that ran every frame.",
+      "Refactored systems to reduce coupling and make them easier to maintain.",
+      "Kept shipping gameplay content and quality-of-life updates throughout the migration.",
     ],
 
     results: [
@@ -63,9 +111,9 @@ export const games: Game[] = [
         after: "1.39 ms",
       },
       {
-        metric: "Heartbeat Stability",
-        before: "Unstable on many long-lived servers",
-        after: "Consistently stable",
+        metric: "Server Heartbeat",
+        before: "1–14",
+        after: "60",
       },
       {
         metric: "Server Memory",
@@ -78,79 +126,120 @@ export const games: Game[] = [
         after: "118.6%",
       },
     ],
+    resultsNote: computeEfficiencyNote,
 
-    beforeImage: "/crazy_chefs/perf_before.png",
-    afterImage: "/crazy_chefs/perf_after.png",
-
-    robloxUrl:
-      "https://www.roblox.com/games/18102078939/CRAZY-CHEFS",
+    evidence: [
+      {
+        src: "/crazy_chefs/perf_before.png",
+        alt: "Roblox server performance dashboard before the work: 16.9 ms server CPU time, 943 MB server memory, unstable heartbeat",
+        label: "Before",
+        width: 979,
+        height: 780,
+      },
+      {
+        src: "/crazy_chefs/perf_after.png",
+        alt: "Roblox server performance dashboard after the work: 1.39 ms server CPU time, 234 MB server memory, heartbeat steady at 60",
+        label: "After",
+        width: 999,
+        height: 833,
+      },
+    ],
   },
 
   {
     slug: "shoot-the-brainrots",
-    title: "Rewriting Data System on a Live Roblox Game",
-    meta: "Worked during 2K-10.5K CCU | 21.1M lifetime visits",
-
-    subtitle: "Data Persistence • LiveOps • Incident Response • QA Collaboration",
     gameName: "Shoot the Brainrots",
+    universeId: 8814191591,
+    robloxUrl: "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
+
+    headline: "Rebuilt saves on ProfileStore, patched item dupes",
+    ccu: "2K–10.5K CCU",
+
+    title: "Rewriting the Data System on a Live Roblox Game",
+    subtitle: "Data Persistence · LiveOps · Incident Response · QA Collaboration",
+    summary:
+      "Moved player saves on a live game to ProfileStore without losing anyone's progress, and closed the item duplication exploits.",
+    role: "LiveOps Programmer",
+    studio: "IndigoVC",
+    stack: "Luau · ProfileStore",
+    highlights: [
+      { label: "Server memory growth", value: "~88%", from: "~210%" },
+      { label: "Compute efficiency", value: "~130%", from: "~32%" },
+    ],
+
     overview:
       "Shoot the Brainrots averaged roughly 2K CCU, peaking at around 2.5K on weekends while I worked on it. I focused on improving the game's datastore systems, investigating production incidents, rewriting the data system without putting existing player progress at risk, and improving server performance.",
+
     challenge:
-      "The game's data system had fragile saving behavior that softlocked players after unexpected server failures. Backwards compatibility was critical to avoid losing the player's progress. Dupes and item corruption was also another problem.",
+      "The game's data system had fragile saving behavior that softlocked players after unexpected server failures. Backwards compatibility was critical to avoid losing players' progress. Dupes and item corruption were also a problem.",
+
     investigation: [
       "Identified a pattern across multiple player reports related to data loss.",
-      "Determined that players didn't actually loose their data, ProfileStore just wasn't able to release their session lock resulting in softlocks.",
+      "Determined that players didn't actually lose their data: ProfileStore couldn't release their session lock, which softlocked them.",
       "Used the findings to narrow the problem down to session ownership rather than corrupted save data.",
-      "I also found systems doing unnecessary work that hurt performance, along with memory leaks caused by stale upvalues, loose references, and dead RBXScriptSignal connections."
+      "Also found systems doing unnecessary work that hurt performance, along with memory leaks caused by stale upvalues, loose references, and dead RBXScriptSignal connections.",
     ],
+
     implementation: [
       "Redesigned the persistence architecture around ProfileStore while maintaining backwards compatibility.",
       "Created a migration that converted legacy player inventories to the new schema without losing progress.",
-      "Introduced an ID system with Roblox's HTTPService to eliminate duplication exploits.",
+      "Introduced an ID system with Roblox's HttpService to eliminate duplication exploits.",
       "Coordinated with QA testers to verify that the new system did not cause data loss before deployment.",
-      "Optimized server systems, reducing memory growth by roughly 2.6× while improving compute efficiency by 71%."
+      "Optimized server systems and fixed the memory leaks, cutting memory growth and improving compute efficiency.",
     ],
+
     results: [
       {
         metric: "Player Saves",
         before: "Softlocks during server failures, no safety rollback for failed operations, complete data loss",
-        after: "Reliable saving, data rollbacks, no data loss"
+        after: "Reliable saving, data rollbacks, no data loss",
       },
       {
         metric: "Duplication Exploits",
         before: "Possible",
-        after: "Patched by Item ID validation"
+        after: "Patched by Item ID validation",
       },
       {
         metric: "Server Memory Growth",
         before: "~210%",
-        after: "~88%"
+        after: "~88%",
       },
       {
         metric: "Compute Efficiency",
         before: "~32%",
-        after: "~130%"
-      }
+        after: "~130%",
+      },
     ],
-    robloxUrl:
-      "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
+    resultsNote: computeEfficiencyNote,
+
+    evidence: [],
   },
+
   {
     slug: "speed-bridge-building",
-    title: "Fixing a spike in client crash rates within minutes",
-    meta: "Worked during 1.5K-3K CCU | 18M lifetime visits",
     gameName: "+1 Speed Bridge Building",
-    subtitle: "Performance Optimization • Rapid Deployment • LiveOps",
+    universeId: 9334607793,
     robloxUrl: "https://www.roblox.com/games/135787657971346/1-Speed-Bridge-Building",
 
+    headline: "Client crash rate 12.01% → near zero",
+    ccu: "1.5K–3K CCU",
+
+    title: "Fixing a Spike in Client Crash Rates Within Minutes",
+    subtitle: "Performance Optimization · Rapid Deployment · LiveOps",
+    summary:
+      "Found and fixed a client crash spike caused by the game loading every bridge at once.",
+    role: "LiveOps Programmer",
+    studio: "IndigoVC",
+    stack: "Luau",
+    highlights: [
+      { label: "Client crash rate", value: "Near zero", from: "12.01%" },
+    ],
+
     overview:
-      "While monitoring games that I used to work on, I noticed +1 Speed Bridge Building(~3k CCU) had a huge spike in client crashes after a recent update that allowed players to easily buy hundreds of thousands of bridges. Trying to load everything at once posed extreme stress to the cpu, no breathing room at all, yikes! No time wasted, I informed my manager and immediately began fixing it. ",
+      "While monitoring games I used to work on, I noticed +1 Speed Bridge Building had a huge spike in client crashes after an update that let players buy hundreds of thousands of bridges. Loading them all at once pushed the client's CPU to its limit. I told my manager and started fixing it right away.",
 
     challenge:
-      "The game attempted to load every bridge simultaneously. When a player loaded the game, they had to wait for a long time, or worse, they crashed. At high speeds, characters became unstable and kept getting flinged due to the bridge's animation creating small ridges that would trip/fling the character.",
-
-    beforeImage: "",
-    afterImage: "/speed_bridge/crash_fix.png",
+      "The game tried to load every bridge at the same time. Players either waited a long time to load in or crashed. At high speeds, characters also became unstable and kept getting flung, because the bridge animation created small ridges that tripped them.",
 
     investigation: [
       "Profiled bridge loading behavior on large saves.",
@@ -171,16 +260,29 @@ export const games: Game[] = [
         after: "Near Zero",
       },
     ],
+
+    evidence: [
+      {
+        src: "/speed_bridge/crash_fix.png",
+        alt: "Client crash rate chart: around 12% to 17% for most of a day, then dropping to near zero after the fix shipped",
+        label: "Client crash rate, before and after the fix",
+        width: 697,
+        height: 499,
+      },
+    ],
   },
   /*{
     slug: "shoot-a-brainrot",
+    gameName: "Shoot a Brainrot",
+    universeId: 8220738785,
+    robloxUrl: "https://www.rolimons.com/game/78949013360566",
+
+    headline: "Rotation fixes: Blender re-export → one-line config change",
+    ccu: "2K–5K CCU",
 
     title: "Reducing Friction Between Modelers and Programmers",
-    meta: "Worked during 2K-5K CCU | 76M lifetime visits",
-
-    subtitle: "Developer Experience • Team Productivity • LiveOps",
-
-    gameName: "Shoot a Brainrot",
+    subtitle: "Developer Experience · Team Productivity · LiveOps",
+    highlights: [],
 
     overview:
       "While working alongside modelers in Shoot a Brainrot, I noticed a repetitive workflow where brainrot assets frequently bounced between modelers and programmers because of incorrect model rotation(usual blender-roblox problems). Fixed it with a few lines of code that allowed modelers and programmers to tweak its rotation as a config.",
@@ -206,7 +308,15 @@ export const games: Game[] = [
       },
     ],
 
-    robloxUrl:
-      "https://www.rolimons.com/game/78949013360566",
+    evidence: [],
   }*/
+];
+
+export const otherGames: OtherGame[] = [
+  {
+    name: "Shoot a Brainrot",
+    universeId: 8220738785,
+    robloxUrl: "https://www.roblox.com/games/78949013360566",
+    ccu: "2K–5K CCU",
+  },
 ];
