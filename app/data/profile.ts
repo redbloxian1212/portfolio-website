@@ -1,7 +1,7 @@
 // Leave a field as "" to hide it on the site.
 export const profile = {
   handle: "src",
-  tagline: "Luau programmer for live Roblox games. Backend, performance, and LiveOps.",
+  tagline: "Luau programmer",
   stack: ["Luau", "Roblox Studio", "Rojo", "Wally", "Argon", "Git", "ProfileStore"],
 
   // Shown next to "Open to work", e.g. "full-time or contract" and "UTC+8".
