@@ -248,7 +248,6 @@ export default async function Home() {
 
         <footer className="flex flex-col sm:flex-row sm:justify-between gap-1.5 sm:gap-4 border-t border-dashed border-neutral-800 pt-4 sm:pt-5 text-[11px] sm:text-xs leading-normal text-gray-400">
           <span>{profile.handle} · Luau programmer</span>
-          <span>Game icons and visit counts update from Roblox automatically.</span>
         </footer>
       </div>
     </main>
