@@ -23,7 +23,9 @@ export type Game = {
   highlights: {
     label: string;
     value: string;
-    from: string;
+    // Shown as "from <value>". Use `note` instead when there's no before value.
+    from?: string;
+    note?: string;
   }[];
 
   overview: string;
@@ -152,39 +154,42 @@ export const games: Game[] = [
     universeId: 8814191591,
     robloxUrl: "https://www.roblox.com/games/130557965403026/Shoot-the-Brainrots",
 
-    headline: "Rebuilt saves on ProfileStore, patched item dupes",
+    headline: "Rewrote the data system in 4 days, zero downtime",
     ccu: "2K–10.5K CCU",
 
-    title: "Rewriting the Data System on a Live Roblox Game",
+    title: "Rewriting a Live Game's Data System in 4 Days",
     subtitle: "Data Persistence · LiveOps · Incident Response · QA Collaboration",
     summary:
-      "Moved player saves on a live game to ProfileStore without losing anyone's progress, and closed the item duplication exploits.",
+      "Rewrote the data system on a live game in 4 days and shipped it with zero downtime, while a content update went out the same week. Every legacy save was migrated to the new schema without losing anyone's progress, and unique item IDs closed the duplication exploits.",
     role: "LiveOps Programmer",
     studio: "IndigoVC",
     stack: "Luau · ProfileStore",
     highlights: [
-      { label: "Server memory growth", value: "~88%", from: "~210%" },
+      { label: "Data system rewrite", value: "4 days", note: "shipped alongside a content update" },
+      { label: "Downtime", value: "Zero", note: "every legacy save migrated live" },
       { label: "Compute efficiency", value: "~130%", from: "~32%" },
     ],
 
     overview:
-      "Shoot the Brainrots averaged roughly 2K CCU, peaking at around 2.5K on weekends while I worked on it. I focused on improving the game's datastore systems, investigating production incidents, rewriting the data system without putting existing player progress at risk, and improving server performance.",
+      "Shoot the Brainrots averaged roughly 2K CCU, peaking at around 2.5K on weekends while I worked on it. I rewrote the game's data system in 4 days and shipped it with no downtime, in the same week as a content update, without putting existing player progress at risk. I also investigated production incidents and improved server performance.",
 
     challenge:
-      "The game's data system had fragile saving behavior that softlocked players after unexpected server failures. Backwards compatibility was critical to avoid losing players' progress. Dupes and item corruption were also a problem.",
+      "The game's data system had fragile saving behavior that softlocked players after unexpected server failures. Dupes and item corruption were also a problem, and they were hard to track down. All of it had to be fixed on a live game, with no downtime and no lost progress, while a content update was shipping the same week.",
 
     investigation: [
       "Identified a pattern across multiple player reports related to data loss.",
       "Determined that players didn't actually lose their data: ProfileStore couldn't release their session lock, which softlocked them.",
       "Used the findings to narrow the problem down to session ownership rather than corrupted save data.",
+      "Traced why dupes were so hard to track: the legacy schema had no unique item IDs, so a duplicated item was indistinguishable from the original.",
       "Also found systems doing unnecessary work that hurt performance, along with memory leaks caused by stale upvalues, loose references, and dead RBXScriptSignal connections.",
     ],
 
     implementation: [
-      "Redesigned the persistence architecture around ProfileStore while maintaining backwards compatibility.",
-      "Created a migration that converted legacy player inventories to the new schema without losing progress.",
-      "Introduced an ID system with Roblox's HttpService to eliminate duplication exploits.",
+      "Rewrote the data system in 4 days, redesigning persistence around ProfileStore while staying backwards compatible with existing saves.",
+      "Migrated every legacy inventory to the new schema, giving each item a unique ID with HttpService, without losing anyone's progress.",
+      "Validated item IDs to shut down duplication exploits and make any duplicate traceable.",
       "Coordinated with QA testers to verify that the new system did not cause data loss before deployment.",
+      "Shipped the rewrite with zero downtime, in the same week as a content update.",
       "Optimized server systems and fixed the memory leaks, cutting memory growth and improving compute efficiency.",
     ],
 
@@ -196,8 +201,8 @@ export const games: Game[] = [
       },
       {
         metric: "Duplication Exploits",
-        before: "Possible",
-        after: "Patched by Item ID validation",
+        before: "Possible, and untraceable: items had no unique IDs",
+        after: "Patched by item ID validation",
       },
       {
         metric: "Server Memory Growth",

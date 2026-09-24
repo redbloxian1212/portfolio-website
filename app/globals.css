@@ -7,3 +7,29 @@ body {
 a, button {
   cursor: url("/pizza.png"), pointer;
 }
+
+/* Faint graph-paper grid, like Studio's baseplate, fading out toward the edges.
+   Fixed, so it stays put while the page scrolls over it. */
+.backdrop-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 25%, black 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 25%, black 30%, transparent 100%);
+}
+
+/* Soft green glow behind the hero. Scrolls away with the page. */
+.backdrop-glow {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 40rem;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 55% 60% at 50% 0%, rgb(5 223 114 / 0.17), transparent 70%);
+}

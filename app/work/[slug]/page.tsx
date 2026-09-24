@@ -125,7 +125,7 @@ export default async function GamePage({ params }: Props) {
             {game.highlights.map((highlight) => (
               <div
                 key={highlight.label}
-                className="flex flex-1 flex-col gap-2 rounded-lg border border-neutral-800 p-5"
+                className="flex flex-1 flex-col gap-2 rounded-lg border border-neutral-800 bg-[#101010] p-5"
               >
                 <span className="text-[11px] tracking-[0.08em] text-gray-400">
                   {highlight.label.toUpperCase()}
@@ -134,7 +134,7 @@ export default async function GamePage({ params }: Props) {
                   {highlight.value}
                 </span>
                 <span className="text-[13px] text-gray-400">
-                  from {highlight.from}
+                  {highlight.from ? `from ${highlight.from}` : highlight.note}
                 </span>
               </div>
             ))}
@@ -183,7 +183,7 @@ export default async function GamePage({ params }: Props) {
 
         {game.results.length > 0 && (
           <Section title="Results">
-            <div className="overflow-x-auto rounded-lg border border-neutral-800">
+            <div className="overflow-x-auto rounded-lg border border-neutral-800 bg-[#101010]">
               <table className="w-full text-sm tabular-nums">
                 <thead className="border-b border-neutral-800">
                   <tr className="text-left">

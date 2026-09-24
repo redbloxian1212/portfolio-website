@@ -29,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${mono.className} bg-[#0d0d0d] text-white min-h-screen`}>
+      <body className={`${mono.className} relative isolate bg-[#0d0d0d] text-white min-h-screen`}>
+        <div aria-hidden="true" className="backdrop-grid" />
+        <div aria-hidden="true" className="backdrop-glow" />
         {children}
       </body>
     </html>
